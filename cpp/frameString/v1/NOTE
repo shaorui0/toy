@@ -1,0 +1,2 @@
+- Always forget update index in while(index != ...)
+- DRY is very important in test and debug
