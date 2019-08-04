@@ -64,8 +64,10 @@ p1->display();
 		- user无需知道是否处理过（只用写main()），所以抽象出一个基类。而且因为也不需要知道传统的**基类指针指向派生类对象**实现OO，于是还要向上抽象出一层**接口类**（Picture）【接口类 - 派生关系对用户不可见】
 			- 还想使用**引用计数**（减少copy），这样就更不必对用户可见了。
 			```
+			//1. 
 			Ptr<Basic_pic> = new Frame_pic(vector<string>)
 			
+			//2. 
 			Picture p1(vector<string>);
 			Picture p3 = frame(p1);//非成员函数 
 
@@ -85,3 +87,21 @@ p1->display();
 			```
 
 		TODO:  接口类Picture实现了设计上的一半，剩下的就是handle方法，及显示ostream了。
+
+		- 思考一下display()
+		```
+		p.display();//底层是frame(p)
+		p.display();//hcat(p)
+		//...
+
+		```
+			Print user_input and framed_picture is easy, one by one;
+			But, hcat? cannot first print a picture and then print others;
+			So , **for(i) + display(, i, ...);**
+
+		- 思考一下getWidth():
+			派生类中，frame-width = string_pic-width + fill spaces
+					  vcat-width遍历获取
+
+			以上这些派生类方法，通过全局的几个函数（frame/vcat/hcat(p1, p2)），Picture获取到的。(多态)
+			通过Picture获取到派生类的宽度（反正最终还是要回归底层 ----- vector<string>）

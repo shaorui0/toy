@@ -12,6 +12,7 @@ int getMaxlen(const vector<string> &v)
 	if (v.size() == 0) 
 		return 0;
 	int maxlen = -1;
+	//size_t maxlen = - 1;//error, size_t is unsigned
 	for (size_t i =0; i < v.size(); ++i){
 		//get current string's size
 		int curLen = v[i].size();
