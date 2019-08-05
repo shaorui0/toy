@@ -1,0 +1,10 @@
+重构：
+
+- 将面向对象结构改为基于对象结构（std::function + std::bind）					//对比两者的差异
+	1. 先从架构上入手，比如观察thread_oo/ob的区别，threadpool_oo/ob的区别		//UML
+	2. 手写的方式画出oo_picture的架构
+	TIPS: 注意，这两个设计模式是【思想】方面的不同, 基于对象靠的是【组合关系】，通过组合部件达到效果。面向对象则通过多态复用代码。
+- 利用shared_ptr替换class Ptr(句柄类)
+	TIPS:
+		注意循环引用		//waked_ptr
+
