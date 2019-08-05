@@ -1,0 +1,14 @@
+# Demand
+
+Input: Engilish.txt + stdinput: wordName(main())
+Output: print all of wordName's line numbers, and part of words include the word.(Ascending order)
+
+
+# Design
+
+word-lines ===> map<string, vector<int>>
+word-frequncy ===> map<string, int>
+line-line's text ===> map<int, string>
+
+
+
