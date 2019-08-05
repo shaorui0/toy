@@ -11,6 +11,7 @@
 class Hcat_pic
 : public Basic_pic{
 	friend Picture hcat(const Picture&, const Picture&);
+	friend class Picture;
 private:
 	Hcat_pic(const Ptr<Basic_pic>& left, const Ptr<Basic_pic>& right)
 	: left_(left)

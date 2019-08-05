@@ -29,7 +29,6 @@ class Picture{
 	friend Picture vcat(const Picture&, const Picture&);
 	friend ostream& operator<<(ostream&, const Picture&);
 
-	friend size_t getFramePictureWidth(Picture &p);
 
 public:
 	//这个构造函数看出它将数据传入到哪里
@@ -42,21 +41,6 @@ private:
 	Ptr<Basic_pic> pPicture_;
 };
 #endif
-/*---------------------------------------*/
-/* Debug helper */
-size_t getFramePictureWidth(Picture &p)
-{
-	Basic_pic* basic = new Frame_pic(p.pPicture_);
-	size_t width = basic->getWidth();
-	//std::cout << "Picture's width = " << width <<endl;
-	return width;
-}
-
-
-
-
-
-/*---------------------------------------*/
 
 /* 这个构造函数，真正的将数据传入底层() */
 Picture::Picture(const vector<string>& v )

@@ -11,6 +11,7 @@
 class Vcat_pic
 : public Basic_pic{
 	friend Picture vcat(const Picture&, const Picture&);
+	friend class Picture;
 private:
 	Vcat_pic(const Ptr<Basic_pic>& top, const Ptr<Basic_pic>& bottom)
 	: top_(top)

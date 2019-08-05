@@ -13,6 +13,7 @@ class Frame_pic
 : public Basic_pic{
 	friend Picture frame(const Picture&);
 	friend size_t getFramePictureWidth(Picture&);
+	friend class Picture;
 private:
 	Frame_pic(const Ptr<Basic_pic>& p)//实现多态
 	: p_(p)

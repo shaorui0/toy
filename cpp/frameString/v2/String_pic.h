@@ -16,7 +16,6 @@ class String_pic
 : public Basic_pic
 {
 	friend class Picture;
-//TODO: 必须定义所有的抽象基类的纯虚函数，否则也为抽象类
 private:
 	String_pic(const vector<string> &v)
 	: data_(v)

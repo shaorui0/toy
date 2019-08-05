@@ -30,11 +30,11 @@ class Picture{
 	friend ostream& operator<<(ostream&, const Picture&);
 
 	friend size_t getFramePictureWidth(Picture &p);
-	//friend void setFrameForm()
 
 public:
 	//这个构造函数看出它将数据传入到哪里
 	Picture(const vector<string>& = vector<string>{});
+	void reframe(char topAndBottom, char leftAndRight, char corner);
 
 private:
 	Picture(Basic_pic *ptr)
@@ -43,21 +43,6 @@ private:
 	Ptr<Basic_pic> pPicture_;
 };
 #endif
-/*---------------------------------------*/
-/* Debug helper */
-size_t getFramePictureWidth(Picture &p)
-{
-	Basic_pic* basic = new Frame_pic(p.pPicture_);
-	size_t width = basic->getWidth();
-	//std::cout << "Picture's width = " << width <<endl;
-	return width;
-}
-
-
-
-
-
-/*---------------------------------------*/
 
 /* 这个构造函数，真正的将数据传入底层() */
 Picture::Picture(const vector<string>& v )
@@ -90,4 +75,8 @@ ostream& operator<<(ostream& os, const Picture& pic)
 		os << endl;
 	}
 	return os;
+}
+void Picture::reframe(char topAndBottom, char leftAndRight, char corner)
+{
+	pPicture_->reframe(topAndBottom, leftAndRight, corner);
 }

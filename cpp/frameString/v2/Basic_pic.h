@@ -17,6 +17,7 @@ class Basic_pic{
 	friend class String_pic;
 	friend class Hcat_pic;
 	friend class Vcat_pic;
+	friend class Picture;
 
 
 public:

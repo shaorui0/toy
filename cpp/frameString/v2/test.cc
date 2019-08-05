@@ -17,7 +17,6 @@ void test()
 	v.push_back("aaaaaaaaaa");
 	v.push_back("aaaaaa");
 	Picture p(v);
-	getFramePictureWidth(p);
 	cout << p<<endl;	
 	//test Frame_pic
 	Picture p2 = frame(p);

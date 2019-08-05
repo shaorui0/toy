@@ -22,6 +22,8 @@ private:
 	: data_(v)
 	{}
 
+	void reframe(char , char , char ){}
+	//抽象基类所继承的成员函数必须显式定义.
 	size_t getWidth();
 	size_t getHeight()
 	{	return data_.size();		}

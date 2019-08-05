@@ -1,7 +1,13 @@
 在version 2的基础上作一些改动：（完成课后习题）
 
 1. 更改frame效果，top/bottom、left/right、four corners 显示不同图形(2.1)
+	Frame_pic里面设置数据成员
 2. 使包裹符号能用户自定义
+	通过消息传递 
+	Picture p;
+	Picture p2 = frame(p);
+	p2.setFrameForm('*', '#', '$');//设置之前需判断是否为Frame_pic对象
+
 3. 写一个操作函数进行重加框，显式改变字符
 	逻辑：发现famed_picture ---> 获取到底层string_picture ---> 调用上面的用户定义符号frame函数，进行refamed！
 3. hcat使短图形处于中间位置
@@ -11,3 +17,5 @@
 	xxx  ********
 	xx  
 	//在display上做文章
+	注意这里的架构，在子图形上，0 - height-1，在hcat上 分别打印所以也是0 - height-1.
+	那么如何实现相对行号打印？

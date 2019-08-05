@@ -11,6 +11,7 @@
 class Vcat_pic
 : public Basic_pic{
 	friend Picture vcat(const Picture&, const Picture&);
+	friend class Picture;
 private:
 	Vcat_pic(const Ptr<Basic_pic>& top, const Ptr<Basic_pic>& bottom)
 	: top_(top)
@@ -21,6 +22,7 @@ private:
 	size_t getHeight()
 	{	return top_->getHeight()+ bottom_->getHeight();	}
 	void display(std::ostream &, size_t, bool );
+	void reframe(char topAndBottom, char leftAndRight, char corner);
 
 	Ptr<Basic_pic> top_, bottom_;
 };
@@ -39,4 +41,10 @@ void Vcat_pic::display(std::ostream &os, size_t lineNum, bool toFillSpace)
 
 	if (toFillSpace)
 		pad(os, w, getWidth());
+}
+void Vcat_pic::reframe(char topAndBottom, char leftAndRight, char corner)
+{
+	top_->reframe(topAndBottom, leftAndRight, corner);
+	bottom_->reframe(topAndBottom, leftAndRight, corner);
+	
 }
