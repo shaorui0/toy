@@ -25,10 +25,36 @@ private:
 	size_t getWidth();
 	size_t getHeight()
 	{	return data_.size();		}
-	std::ostream& display(std::ostream &, size_t, bool );
+	void display(std::ostream &, size_t, bool );
 	
 	vector<string> data_;
 
 };
 
 #endif
+void String_pic::display(std::ostream &os, size_t lineNum, bool toFillSpace)
+{
+	//display i-th line
+	size_t start = 0;
+
+	if (lineNum < getHeight()) {
+		os << data_[lineNum];
+		start = data_[lineNum].size();
+	}
+	if (toFillSpace)
+		pad(os, start, getWidth());//对每一行进行补，通过os里面的？
+
+}
+size_t String_pic::getWidth()
+{
+	//Get max width by iterating strings
+	size_t maxsize = 0;	
+	//for i in strings
+	for (size_t i = 0; i != data_.size(); ++i){
+		//if strings[i]'s size > maxsize
+		//update maxsize
+		maxsize = std::max(maxsize, data_[i].size());//利用algorithm减少行数
+		printf("第%d行，maxsize = %d\n", i, data_[i].size());
+	}
+	return maxsize;
+}

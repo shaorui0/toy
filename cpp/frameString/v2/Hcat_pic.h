@@ -8,22 +8,28 @@
 #define __HCAT_PIC__
 #include "Basic_pic.h"
 #include "Ptr.h"
-class Picture;
 class Hcat_pic
 : public Basic_pic{
 	friend Picture hcat(const Picture&, const Picture&);
-
 private:
 	Hcat_pic(const Ptr<Basic_pic>& left, const Ptr<Basic_pic>& right)
 	: left_(left)
 	, right_(right)
 	{}
 
-	size_t getWidth();
-	size_t getHeight();
-	std::ostream& display(std::ostream &, size_t, bool );
+	size_t getWidth()
+	{	return left_->getWidth() + right_->getWidth(); }
+	size_t getHeight()
+	{	return std::max(left_->getHeight(), right_->getHeight());	}
+	void display(std::ostream &, size_t, bool );
 
 	Ptr<Basic_pic> left_, right_;
 };
 
 #endif
+void Hcat_pic::display(std::ostream &os, size_t lineNum, bool toFillSpace)
+{
+	//稍微要处理一下 left'height < right's height的情况
+	left_->display(os, lineNum, toFillSpace||lineNum<right_->getHeight());//超过了也补space, width*" "
+	right_->display(os, lineNum, toFillSpace);
+}

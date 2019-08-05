@@ -8,14 +8,22 @@
 #define __BASIC_H__
 #include <iostream>
 
+
 /* 无需此类的对象，仅作为抽象基类接口*/
+class Picture;
 class Basic_pic{
+	friend std::ostream &operator<<(std::ostream&, const Picture);
+	friend class Frame_pic;
+	friend class String_pic;
+	friend class Hcat_pic;
+	friend class Vcat_pic;
+
 
 public:
 
 	virtual size_t getWidth()=0;
 	virtual size_t getHeight()=0;
-	virtual std::ostream& display(std::ostream &, size_t, bool )=0;
+	virtual void display(std::ostream &, size_t, bool )=0;
 protected:
 	static void pad(std::ostream& os, size_t start, size_t end)//无需继承，实现相同
 	{
@@ -25,12 +33,5 @@ protected:
 			++start;
 		}
 	}
-
-private:
-	//TODO: 数据成员
 };
-
-
-
-
 #endif

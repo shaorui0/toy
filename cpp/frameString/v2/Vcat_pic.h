@@ -8,10 +8,8 @@
 #define __VCAT_PIC__
 #include "Basic_pic.h"
 #include "Ptr.h"
-class Picture;
 class Vcat_pic
 : public Basic_pic{
-
 	friend Picture vcat(const Picture&, const Picture&);
 private:
 	Vcat_pic(const Ptr<Basic_pic>& top, const Ptr<Basic_pic>& bottom)
@@ -22,14 +20,13 @@ private:
 	{	return std::max(top_->getWidth(), bottom_->getWidth());	}
 	size_t getHeight()
 	{	return top_->getHeight()+ bottom_->getHeight();	}
-	std::ostream& display(std::ostream &, size_t, bool );
+	void display(std::ostream &, size_t, bool );
 
 	Ptr<Basic_pic> top_, bottom_;
-
 };
 
 #endif
-std::ostream& Vcat_pic::display(std::ostream &os, size_t lineNum, bool toFillSpace)
+void Vcat_pic::display(std::ostream &os, size_t lineNum, bool toFillSpace)
 {
 	size_t w = 0;
 	if (lineNum < top_->getHeight()){
@@ -42,5 +39,4 @@ std::ostream& Vcat_pic::display(std::ostream &os, size_t lineNum, bool toFillSpa
 
 	if (toFillSpace)
 		pad(os, w, getWidth());
-
 }

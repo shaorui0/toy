@@ -8,22 +8,43 @@
 #define __FRAME_H__
 #include "Basic_pic.h"
 #include "Ptr.h"
-class Picture;
 class Frame_pic 
 : public Basic_pic{
 	friend Picture frame(const Picture&);
-
+	friend size_t getFramePictureWidth(Picture&);
 private:
-	Frame_pic(const Ptr<Basic_pic>& framed)//实现多态
-	: framed_(framed)
+	Frame_pic(const Ptr<Basic_pic>& p)//实现多态
+	: p_(p)
 	{}
 
-	size_t getWidth();
-	size_t getHeight();
-	std::ostream& display(std::ostream &, size_t, bool );
+	size_t getWidth()
+	{	return p_->getWidth()+4;	}//String_pic
+	size_t getHeight()
+	{	return p_->getHeight()+4;	}
+	void display(std::ostream &, size_t, bool );
 
-	Ptr<Basic_pic> framed_;
+	Ptr<Basic_pic> p_;
 
 };
-
 #endif
+void Frame_pic::display(std::ostream &os, size_t lineNum, bool toFillSpace)
+{
+	std::cout << "第"<<lineNum <<"行 :";
+	if(lineNum > getHeight()){
+		if (toFillSpace)
+			pad(os, 0, getWidth());
+	} else {
+		if (lineNum == 0 || lineNum == getHeight()-1)
+			os<<std::string(getWidth(), '*');
+		else if (lineNum == 1||lineNum == getHeight()-2) {
+			os << "*";
+			pad(os, 1, getWidth()-1);
+			os << "*";
+		} else {
+			os << "* ";
+			p_->display(os, lineNum-2, true);
+			os << " *";
+		}
+	}
+	std::cout << "第"<<lineNum <<"行 finished\n";
+}
