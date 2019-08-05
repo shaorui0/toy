@@ -8,6 +8,7 @@
 #define __FRAME_H__
 #include "Basic_pic.h"
 #include "Ptr.h"
+#include <unistd.h>
 class Frame_pic 
 : public Basic_pic{
 	friend Picture frame(const Picture&);
@@ -29,7 +30,6 @@ private:
 #endif
 void Frame_pic::display(std::ostream &os, size_t lineNum, bool toFillSpace)
 {
-	std::cout << "第"<<lineNum <<"行 :";
 	if(lineNum > getHeight()){
 		if (toFillSpace)
 			pad(os, 0, getWidth());
@@ -46,5 +46,5 @@ void Frame_pic::display(std::ostream &os, size_t lineNum, bool toFillSpace)
 			os << " *";
 		}
 	}
-	std::cout << "第"<<lineNum <<"行 finished\n";
+	//sleep(2);
 }

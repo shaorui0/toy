@@ -48,7 +48,7 @@ size_t getFramePictureWidth(Picture &p)
 {
 	Basic_pic* basic = new Frame_pic(p.pPicture_);
 	size_t width = basic->getWidth();
-	std::cout << "Picture's width = " << width <<endl;
+	//std::cout << "Picture's width = " << width <<endl;
 	return width;
 }
 

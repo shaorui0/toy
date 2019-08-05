@@ -21,15 +21,17 @@ void test()
 	cout << p<<endl;	
 	//test Frame_pic
 	Picture p2 = frame(p);
-	//
+	cout << p2<<endl;	
+	Picture p3 = frame(p2);
+	cout << p3<<endl;	
 	//test Vcat_pic
 	//cout << vcat(vcat(p, p), p)<<endl;	
 	//
 	//test Hcat_pic
-	//cout << hcat(p, p)<<endl;	
+	cout << hcat(p, p3)<<endl;	
 	//
 	//test fixed picture
-	//cout << frame(hcat(p, frame(p)))<<endl;	
+	cout << frame(hcat(p, frame(p)))<<endl;	
 
 }
 

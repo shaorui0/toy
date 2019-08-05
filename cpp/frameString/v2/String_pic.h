@@ -54,7 +54,6 @@ size_t String_pic::getWidth()
 		//if strings[i]'s size > maxsize
 		//update maxsize
 		maxsize = std::max(maxsize, data_[i].size());//利用algorithm减少行数
-		printf("第%d行，maxsize = %d\n", i, data_[i].size());
 	}
 	return maxsize;
 }
