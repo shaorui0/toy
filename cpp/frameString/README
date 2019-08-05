@@ -12,14 +12,26 @@
 		1. frame user input by "*"	
 		FORM:
 		********************************
+		*							   *
 		* "hello"					   *
 		* "my name is **"			   *
 		* "what's your name?"		   *	
 		* "this is my frame producer!" *
+		*							   *
 		********************************
 
 		2. vcat two strings(vector<string>)  #vertical
-		...
+
+		"hello"					    ********************************		 
+		"my name is **"			    *							   *
+		"what's your name?"		    * "hello"					   *
+		"this is my frame producer!"* "my name is **"			   *
+		                            * "what's your name?"		   *
+		                            * "this is my frame producer!" *
+		                            *							   *
+		                            ********************************
+
+
 		3. hcat two strings(vector<string>)  #horizontal
 		...
 
