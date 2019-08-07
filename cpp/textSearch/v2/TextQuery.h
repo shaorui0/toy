@@ -1,34 +1,32 @@
- ///
- /// @file    TextQuery.h
- /// @author  shaorui(sr1054461216@gmail.com)
- /// @date    2019-08-05 01:41:07
- ///
- 
-#include <stdio.h>
-#include <string>
-#include <map>
-#include <set>
-using std::map;
-using std::set;
-using std::string;
-
- 
+///
+/// @file    TextQuery.h
+/// @author  shaorui(sr1054461216@gmail.com)
+/// @date    2019-08-05 01:41:07
+///
+#ifndef __TEXT_QUERY__
+#define __TEXT_QUERY__
+#include "QueryResult.h"
+class QueryResult;
 class TextQuery{
-public:
-	TextQuery(string filename, string queryWord)
-	: filename_(filename)
-	, queryWord_(queryWord){}
+	public:
+		TextQuery(string filename)
+		: filename_(filename)
+		, lineText_(new vector<string>) 
+		{
+			handleFile();
+		}
 
+		QueryResult query(string word);
+		// Debug function(看文件处理是否成功)
+		void printFileText();
+		void printWordLine();
+	private:
+		void handleFile();
 
-private:
-	string filename_;
-	string queryWord_;
+		string filename_;
+		string queryWord_;
 
-	map<string, set<int>> wordLines_;
-	map<string, int> wordFrequency_;
-	map<int, string> lineText_;
+		map<string, shared_ptr<set<int>>> wordLines_;
+		shared_ptr<vector<string>> lineText_;
 };
-int main(void)
-{
- 
-}
+#endif
