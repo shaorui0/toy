@@ -24,6 +24,7 @@ int main()
 	Query q = Query("fieryadsdasdasdasd")|Query("wind");
 		//|(Query("word")&Query("a"));
 	TextQuery tq("../english.txt");//提供语料
+	//tq里面保存了全部的信息(vector/map)
 	QueryResult result = q.eval(tq);
 	print(cout, result);
 

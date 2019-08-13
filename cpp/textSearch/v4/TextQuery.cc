@@ -8,7 +8,7 @@
 QueryResult TextQuery::query(string word) const 
 {
 	if (wordLines_.find(word) == wordLines_.end()) {//cannot find "word"		
-		shared_ptr<set<line_no>> nodata(new set<line_no>);
+		set<line_no>* nodata(new set<line_no>);
 		return QueryResult(word, nodata, lineText_);
 	} else {
 		auto localData = wordLines_.find(word);//map
@@ -39,8 +39,8 @@ void TextQuery::handleFile(){
 			//read a word
 			//update wordLines_
 			auto &lines = wordLines_[word];
-			if (!lines)
-				lines.reset(new set<line_no>);
+			if (!lines)//cannot find "word"
+				lines = new set<line_no>;
 			lines->insert(lineNum);
 		}
 		++lineNum;
