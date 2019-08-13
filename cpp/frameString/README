@@ -10,6 +10,7 @@
 		1. frame user input by "*"	
 		FORM:
 		********************************
+<<<<<<< HEAD
         *                              *
         * "hello"                      *
         * "my name is **"              *
@@ -17,6 +18,15 @@
         * "this is my frame producer!" *
         *                              *
         ********************************
+=======
+		*	         	       *
+		* "hello"         	       *
+		* "my name is **"	       *
+		* "what's your name?"	       *	
+		* "this is my frame producer!" *
+		*			       *
+		********************************
+>>>>>>> a55b9033c6a9eeb055b8cf7bcc7df0fdb40ca459
 
 		2. vcat two strings(vector<string>)  #vertical
 
