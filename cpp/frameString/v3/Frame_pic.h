@@ -29,7 +29,7 @@ private:
 	void display(std::ostream &, size_t, bool );
 	void reframe(char topAndBottom, char leftAndRight, char corner);
 
-	Ptr<Basic_pic> p_;
+	Ptr<Basic_pic> p_;//指向基类的指针，再分配。
 	char corner;
 	char topAndBottom;
 	char leftAndRight;
